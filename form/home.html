@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -23,7 +23,7 @@
     />
     <!-- Import font End-->
     <link rel="stylesheet" href="/Ari-s-Dream/css/style.css" />
-    <title>Welcome to Ari Dream</title>
+    <title>Ari Dream</title>
   </head>
   <body>
     <form action="/Ari-s-Dream/login.php" method="post">
@@ -33,40 +33,26 @@
       <div class="row justify-content-center mt-5">
         <div class="col-md-4">
           <div class="card">
-            <h4 class="card-header text-center">Register</h4>
+            <h4 class="pt-2 text-center">Home Page</h4>
             <div class="card-body">
               <form>
                 <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="username"
-                    placeholder="Enter your username"
-                    required
-                  />
+                  <h7><strong>Upload image here</strong></h7>
+                  <br />
+                  <input type="file" name="file" />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
+                  <label>Text</label>
+                  <br />
                   <input
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
+                    type="text"
+                    name="text"
+                    placeholder="Enter your text"
                   />
                 </div>
-                <button
-                  type="submit"
-                  name="signup"
-                  class="btn btn-primary btn-block"
-                >
-                  Register
+                <button type="submit" name="login" class="btn btn-primary">
+                  Submit
                 </button>
-                <div class="mt-1">
-                  <span>Already have account?</span>
-                  <a href="/Ari-s-Dream/form/login.html">Login here</a>
-                </div>
               </form>
             </div>
           </div>

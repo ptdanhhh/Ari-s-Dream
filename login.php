@@ -36,7 +36,7 @@
 
     if (mysqli_num_rows($Credentials) > 0){ // check if query return 1 row mean username and pw are correct
       $_SESSION["user"] = $username;
-      header("location:home.html");
+      header("location:form/home.html");
     } else {
       echo"username or password was wrong";
     }
