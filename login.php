@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require_once 'dbconnect.php';
   if( isset($_POST['signup']) && $_POST["username"] != '' && $_POST["password"] != ''){ // sign up section
 
@@ -19,14 +20,13 @@
       $sql = "INSERT INTO user_info (user_name, hashed_password) VALUES ('$username', '$password')";
       $query = mysqli_query($conn,$sql);
       
-      if($query){
-        
+      if($query){ 
+        echo"<script>alert('Account Registered Successfully')</script>";
       } 
     }
   }
 
   if( isset($_POST['login']) && $_POST["username"] != '' && $_POST["password"] != ''){ // login section
-    session_start();
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password = md5($password); // encrypted password
@@ -36,7 +36,7 @@
 
     if (mysqli_num_rows($Credentials) > 0){ // check if query return 1 row mean username and pw are correct
       $_SESSION["user"] = $username;
-      header("location:form/home.html");
+      header("location:home.php");
     } else {
       echo"username or password was wrong";
     }
