@@ -38,10 +38,10 @@
         }    
       }
 
-      if (isset($_FILES["file"]) && $_POST["text"]){ // query
+      if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
         $query = "INSERT INTO user_data (text_input, image_file) VALUES ('$text','$filename')";
         $result = $conn->query($query);
-      } elseif (isset($_FILES["file"]) && $_POST["text"] == ''){
+      } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){
         $query = "INSERT INTO user_data (text_input, image_file) VALUES ('','$filename')";
         $result = $conn->query($query);
       } 
