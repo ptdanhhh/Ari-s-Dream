@@ -7,7 +7,6 @@
 
   } elseif (isset($_SESSION["user"])) {
     $username = $_SESSION["user"];
-    echo "<h4>Hi $username</h4>";
 
     if(isset($_POST["submit"])){ 
 
@@ -25,7 +24,7 @@
           $filename = $_FILES["file"]["name"];
           $tmpName = $_FILES["file"]["tmp_name"];
 
-          $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/picture/";
+          $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/picture/"; // get correct directory on different machine
           $newfilename = uniqid() . "-" . basename($filename); // Generate a unique filename
 
           $destinationPath = $destinationFolder . $newfilename;
@@ -77,9 +76,11 @@
   </head>
   <body>
 
-    <form action="/Ari-s-Dream/logout.php" method="post">
-      <button type="submit" name="logout" class="btn btn-primary">logout</button>
-    </form>
+    <div class="mt-3 ml-3">
+      <form action="/Ari-s-Dream/logout.php" method="post">
+        <button type="submit" name="logout" class="btn btn-primary">Logout</button>
+      </form>
+    </div>
 
     <form
       action="/Ari-s-Dream/home.php"
@@ -87,7 +88,7 @@
       enctype="multipart/form-data"
     >
       <div class="text-center mt-4">
-        <h1><strong>Welcome to Ari Dream</strong></h1>
+        <h1><strong>Welcome back <?php echo ucfirst($username); ?></strong></h1>
       </div>
       <div class="row justify-content-center mt-4">
         <div class="col-md-4">
