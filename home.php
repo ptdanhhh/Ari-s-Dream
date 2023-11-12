@@ -30,10 +30,28 @@
       }
 
       if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
-        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('$text','$newfilename')";
-        $result = $conn->query($query); } elseif (isset($_FILES["file"]) &&
-$_POST["input_text"] == ''){ $query = "INSERT INTO user_data (text_input,
-image_file) VALUES ('','$newfilename')"; $result = $conn->query($query); } } }
+
+        $query = "INSERT INTO user_data (text_input, image_file, user) VALUES ('$text','$newfilename','$username')";
+        $result = $conn->query($query); 
+
+      } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){ 
+
+        $query = "INSERT INTO user_data (text_input,image_file, user) VALUES ('','$newfilename','$username')";
+        $result = $conn->query($query); 
+
+      } 
+    } 
+
+    if(isset($_POST["showdata"])){
+      header("location:data.php");
+    }
+
+
+
+
+
+
+  }
 ?>
 
 <html lang="en">
