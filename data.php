@@ -52,8 +52,9 @@
             </td>
 
             <td style="border: 2px solid">
-            <img src="picture/<?php echo $row["image_file"];?>" width = 200></td>
-            </tr>
+              <img src="picture/<?php echo $row["image_file"];?>" width = 200>
+            </td>
+          </tr>
         <?php endforeach; ?>
         
       </table>
