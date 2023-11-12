@@ -15,4 +15,5 @@
 	  id INT NOT NULL,  
   	text_input VARCHAR(255), 
   	image_file VARCHAR(255),
+        user VARCHAR(255),
   	PRIMARY KEY(id));
