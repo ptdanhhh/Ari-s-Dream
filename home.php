@@ -18,10 +18,9 @@
           $filename = $_FILES["file"]["name"];
           $tmpName = $_FILES["file"]["tmp_name"];
 
-          $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/Ari-s-Dream/picture/"; // get correct directory on different machine
           $newfilename = uniqid() . "-" . basename($filename); // Generate a unique filename
-          $destinationPath = $destinationFolder . $newfilename;
-
+          $destinationPath = getcwd() . "/picture/" . $newfilename; // get correct directory on different machine
+        
           if (move_uploaded_file($tmpName, $destinationPath)){
               echo "File uploaded successfully";
           } else {
