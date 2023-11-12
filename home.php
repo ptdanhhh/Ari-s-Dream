@@ -11,12 +11,6 @@
     if(isset($_POST["submit"])){ 
 
       $text = $_POST["input_text"];
-      // $filename = $_FILES["file"]["name"];
-      // $tmpName = $_FILES["file"]["tmp_name"];
-      
-      // $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/picture/" . basename($filename);
-      // echo $destinationFolder;
-      
       if (isset($_FILES["file"])){ // check and get file data
         $file = $_FILES["file"];
         if ($file["error"] === UPLOAD_ERR_OK && $file["type"] === "image/jpeg") { 
@@ -24,24 +18,23 @@
           $filename = $_FILES["file"]["name"];
           $tmpName = $_FILES["file"]["tmp_name"];
 
-          $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/picture/"; // get correct directory on different machine
+          $destinationFolder = $_SERVER['DOCUMENT_ROOT'] . "/Ari-s-Dream/picture/"; // get correct directory on different machine
           $newfilename = uniqid() . "-" . basename($filename); // Generate a unique filename
-
           $destinationPath = $destinationFolder . $newfilename;
 
-          if (move_uploaded_file($tmpName, $destinationPath)) {
-              echo "File uploaded successfully.";
+          if (move_uploaded_file($tmpName, $destinationPath)){
+              echo "File uploaded successfully";
           } else {
-              echo "Error moving the file.";
+              echo "Error moving file";
           }
         }    
       }
 
       if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
-        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('$text','$filename')";
+        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('$text','$newfilename')";
         $result = $conn->query($query);
       } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){
-        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('','$filename')";
+        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('','$newfilename')";
         $result = $conn->query($query);
       } 
     }
@@ -88,7 +81,7 @@
       enctype="multipart/form-data"
     >
       <div class="text-center mt-4">
-        <h1><strong>Welcome back <?php echo ucfirst($username); ?></strong></h1>
+        <h1><strong>Welcome <?php echo ucfirst($username); ?></strong></h1>
       </div>
       <div class="row justify-content-center mt-4">
         <div class="col-md-4">
@@ -97,7 +90,7 @@
             <div class="card-body">
               <form>
                 <div class="mb-3">
-                  <div>Upload image</div>
+                  <div class="mb-1">Upload image</div>
                   <input type="file" name="file" accept=".jpeg" />
                 </div>
                 <div class="mb-3">
