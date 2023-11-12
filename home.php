@@ -31,13 +31,9 @@
 
       if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
         $query = "INSERT INTO user_data (text_input, image_file) VALUES ('$text','$newfilename')";
-        $result = $conn->query($query);
-      } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){
-        $query = "INSERT INTO user_data (text_input, image_file) VALUES ('','$newfilename')";
-        $result = $conn->query($query);
-      } 
-    }
-  }
+        $result = $conn->query($query); } elseif (isset($_FILES["file"]) &&
+$_POST["input_text"] == ''){ $query = "INSERT INTO user_data (text_input,
+image_file) VALUES ('','$newfilename')"; $result = $conn->query($query); } } }
 ?>
 
 <html lang="en">
@@ -67,10 +63,11 @@
     <title>Ari Dream</title>
   </head>
   <body>
-
     <div class="mt-3 ml-3">
       <form action="/Ari-s-Dream/logout.php" method="post">
-        <button type="submit" name="logout" class="btn btn-primary">Logout</button>
+        <button type="submit" name="logout" class="btn btn-primary">
+          Logout
+        </button>
       </form>
     </div>
 
@@ -80,7 +77,12 @@
       enctype="multipart/form-data"
     >
       <div class="text-center mt-4">
-        <h1><strong>Welcome <?php echo ucfirst($username); ?></strong></h1>
+        <h1>
+          <strong
+            >Welcome
+            <?php echo ucfirst($username); ?></strong
+          >
+        </h1>
       </div>
       <div class="row justify-content-center mt-4">
         <div class="col-md-4">
@@ -89,17 +91,25 @@
             <div class="card-body">
               <form>
                 <div class="mb-3">
-                  <div class="mb-1">Upload image</div>
+                  <div class="mb-1">
+                    <label>Upload image</label>
+                  </div>
                   <input type="file" name="file" accept=".jpeg" />
                 </div>
                 <div class="mb-3">
-                  <div>Text</div>
-                  <textarea
-                    name="input_text"
-                    placeholder="Enter your text"
-                    cols="40"
-                    rows="5"
-                  ></textarea>
+                  <div class="container">
+                    <div class="row">
+                      <label for="myTextArea">Type something:</label>
+                      <div class="col-md-12">
+                        <textarea
+                          class="form-control"
+                          name="input_text"
+                          rows="4"
+                          placeholder="Enter text here..."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-1">
                   <button type="submit" name="submit" class="btn btn-primary">
