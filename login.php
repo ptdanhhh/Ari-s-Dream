@@ -15,9 +15,12 @@
 
       $username = $_POST['username'];
       $password = $_POST['password'];
-      $password = md5($password); // encrypted password
+      $salt1 = "e#fna$%#2";
+      $salt2 = "243rwe890";
 
-      $sql = "INSERT INTO user_info (user_name, hashed_password) VALUES ('$username', '$password')";
+      $newPassword = md5($salt1 . $password . $salt2); // encrypted password
+
+      $sql = "INSERT INTO user_info (user_name, hashed_password) VALUES ('$username', '$newPassword')";
       $query = mysqli_query($conn,$sql);
       
       if($query){ 
@@ -30,7 +33,9 @@
   if( isset($_POST['login']) && $_POST["username"] != '' && $_POST["password"] != ''){ // login section
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $password = md5($password); // encrypted password
+    $salt1 = "e#fna$%#2";
+    $salt2 = "243rwe890";
+    $password = md5($salt1 . $password . $salt2); // encrypted password
 
     $sql = "SELECT * FROM user_info WHERE user_name='$username' AND hashed_password='$password'";
     $Credentials = mysqli_query($conn,$sql);
