@@ -22,6 +22,7 @@
       
       if($query){ 
         echo"<script>alert('Account Registered Successfully')</script>";
+        echo "<script>window.location.href='/Ari-s-Dream/form/login.html';</script>";
       } 
     }
   }
