@@ -5,8 +5,12 @@
   if( isset($_POST['signup']) && $_POST["username"] != '' && $_POST["password"] != ''){ // sign up section
 
     $username = $_POST['username'];
-    $sql = "SELECT * FROM user_info WHERE user_name='$username'";
-    $isAvailable = mysqli_query($conn,$sql);
+
+    $sql = "SELECT * FROM user_info WHERE user_name=?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 's', $username);
+    mysqli_stmt_execute($stmt);
+    $isAvailable = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($isAvailable) > 0){
 
