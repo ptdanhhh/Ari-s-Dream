@@ -31,13 +31,17 @@
 
       if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
 
-        $query = "INSERT INTO user_data (text_input, image_file, user) VALUES ('$text','$newfilename','$username')";
-        $result = $conn->query($query); 
+        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'sss', $text, $newfilename, $username);
+        $query = mysqli_stmt_execute($stmt);
 
       } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){ 
-
-        $query = "INSERT INTO user_data (text_input,image_file, user) VALUES ('','$newfilename','$username')";
-        $result = $conn->query($query); 
+        
+        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'sss', $text, $newfilename, $username);
+        $query = mysqli_stmt_execute($stmt);
 
       } 
     } 
@@ -45,12 +49,6 @@
     if(isset($_POST["showdata"])){
       header("location:data.php");
     }
-
-
-
-
-
-
   }
 ?>
 
