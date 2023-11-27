@@ -30,6 +30,10 @@
     <title>Welcome to Ari Dream</title>
   </head>
   <body>
+    
+    <a href="/Ari-s-Dream/home.php" class="btn btn-primary mt-3 ml-3 mb-3">Home</a>
+    
+    
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
 
