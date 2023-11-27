@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
   require_once 'dbconnect.php';
 
   if( !isset($_SESSION["user"])) {
@@ -31,14 +31,14 @@
 
       if (isset($_FILES["file"]) && $_POST["input_text"]){ // query
 
-        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)"; // query and placeholder with prepare function
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, 'sss', $text, $newfilename, $username);
         $query = mysqli_stmt_execute($stmt);
 
       } elseif (isset($_FILES["file"]) && $_POST["input_text"] == ''){ 
         
-        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO user_data (text_input, image_file, user) VALUES (?, ?, ?)"; // query and placeholder with prepare function
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, 'sss', $text, $newfilename, $username);
         $query = mysqli_stmt_execute($stmt);

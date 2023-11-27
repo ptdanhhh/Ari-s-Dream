@@ -1,6 +1,6 @@
 <?php require_once 'dbconnect.php'; 
  session_start();
- $username = $_SESSION["user"];
+ $username = $_SESSION["user"]; //get username for query data for this unique user in db
 ?>
 
 <html lang="en">
@@ -46,7 +46,8 @@
           </th>
         </tr>
         <?php
-          $query = "SELECT * FROM user_data WHERE user='$username' ORDER BY id DESC";
+          // query data from unique user not really need placeholder here because no need to input anything here
+          $query = "SELECT * FROM user_data WHERE user='$username' ORDER BY id DESC"; 
           $rows = $conn->query($query); 
         ?>
         <?php foreach($rows as $row): ?>
