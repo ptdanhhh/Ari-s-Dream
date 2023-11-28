@@ -22,9 +22,9 @@ session_start();
           $destinationPath = getcwd() . "/picture/" . $newfilename; // get correct directory on different machine
         
           if (move_uploaded_file($tmpName, $destinationPath)){
-              echo "File uploaded successfully";
+              echo "<script>alert('File uploaded successfully')</script>";
           } else {
-              echo "Error moving file";
+            echo "<script>alert('File upload error')</script>";
           }
         }    
       }
